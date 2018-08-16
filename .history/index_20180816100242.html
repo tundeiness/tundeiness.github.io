@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Techincal Documentation Page</title>
+</head>
+
+<body>
+    <main id="main-doc">
+        <nav role="navigation" id="navbar">
+            <header>JavaScript Objects</header>
+            <ul class="top">
+                <a href="#Introducing_JavaScript_Objects" class="nav-link">
+                    <li>Introducing JavaScript Objects</li>
+                </a>
+                <hr>
+                <a href="#Prerequisites" class="nav-link">
+                    <li>Prerequisites</li>
+                </a>
+                <hr>
+                <a href="#JavaScript_object_basics" class="nav-link">
+                    <li>JavaScript object basics</li>
+                </a>
+                <hr>
+                <a href="#Dot_notation" class="nav-link">
+                    <li>Dot notation</li>
+                </a>
+                <hr>
+                <a href="#Bracket_notation" class="nav-link">
+                    <li>Bracket notation</li>
+                </a>
+                <hr>
+                <a href="#Setting_object_members" class="nav-link">
+                    <li>Setting object members</li>
+                </a>
+                <hr>
+                <a href="#What_is_'this'?" class="nav-link">
+                    <li>What is 'this'?</li>
+                </a>
+                <hr>
+                <a href="#Object-oriented_JavaScript_for_beginners" class="nav-link">
+                    <li>Object-oriented JavaScript for beginners</li>
+                </a>
+                <hr>
+                <a href="#Constructors_and_object_instances" class="nav-link">
+                    <li>Constructors and object instances</li>
+                </a>
+                <hr>
+                <a href="#Other_ways_to_create_object_instances" class="nav-link">
+                    <li>Other ways to create object instances</li>
+                </a>
+                <hr>
+                <a href="#Object_Prototypes" class="nav-link">
+                    <li>Object Prototypes</li>
+                </a>
+                <hr>
+                <a href="#The_prototype_property:_Where_inherited_members_are_defined" class="nav-link">
+                    <li>The prototype property: Where inherited members are defined</li>
+                </a>
+                <hr>
+                <a href="#Revisiting_create()" class="nav-link">
+                    <li>Revisiting create()</li>
+                </a>
+                <hr>
+                <a href="#The_constructor_property" class="nav-link">
+                    <li>The constructor property</li>
+                </a>
+                <hr>
+                <a href="#Prototypal_inheritance" class="nav-link">
+                    <li>Prototypal inheritance</li>
+                </a>
+                <hr>
+
+                <a href="#Defining_a_Teacher()_constructor_function" class="nav-link">
+                    <li>Defining a Teacher() constructor function</li>
+                </a>
+                <hr>
+                <a href="#Setting_Teacher()_prototype_and_constructor_reference" class="nav-link">
+                    <li>Setting Teacher() prototype and constructor reference</li>
+                </a>
+                <hr>
+                <a href="#Giving_Teacher()_a_new_greeting()_function" class="nav-link">
+                    <li>Giving Teacher() a new greeting() function</li>
+                </a>
+                <hr>
+                <a href="#ECMAScript_2015_Classes" class="nav-link">
+                    <li>ECMAScript 2015 Classes</li>
+                </a>
+                <hr>
+                <a href="#Inheritance_with_class_syntax" class="nav-link">
+                    <li>Inheritance with class syntax</li>
+                </a>
+                <hr>
+                <a href="#Getters_and_Setters" class="nav-link">
+                    <li>Getters and Setters</li>
+                </a>
+                <hr>
+                <a href="#When_would_you_use_inheritance_in_JavaScript?" class="nav-link">
+                    <li>When would you use inheritance in JavaScript?</li>
+                </a>
+                <hr>
+                <a href="#Reference" class="nav-link">
+                    <li>Reference</li>
+                </a>
+            </ul>
+        </nav>
+
+        <section id="root">
+            <section class="main-section" id="Introducing_JavaScript_Objects">
+                <header>Introducing JavaScript Objects</header>
+                <article>
+                    <p>In JavaScript, most things are objects, from core JavaScript features like strings and arrays to the browser APIs built on top of JavaScript. You can even create your own objects to encapsulate related functions and variables into
+                        efficient packages, and act as handy data containers. The object-based nature of JavaScript is important to understand if you want to go further with your knowledge of the language, therefore we've provided this module to help
+                        you. Here we teach object theory and syntax in detail, then look at how to create your own objects.</p>
+                </article>
+            </section>
+
+            <section class="main-section" id="Prerequisites">
+                <header>Prerequisites</header>
+                <article>
+                    <p>Before starting this module, you should have some familiarity with HTML and CSS. You are advised to work through the Introduction to HTML and Introduction to CSS modules before starting on JavaScript.</p>
+
+                    <p>You should also have some familiarity with JavaScript basics before looking at JavaScript objects in detail. Before attempting this module, work through JavaScript first steps and JavaScript building blocks.</p>
+                </article>
+            </section>
+
+
+
+            <section class="main-section" id="JavaScript_object_basics">
+                <header>JavaScript object basics</header>
+                <article>
+                    <p>An object is a collection of related data and/or functionality (which usually consists of several variables and functions — which are called properties and methods when they are inside objects.) Let's work through an example to understand
+                        what they look like.</p>
+
+                    <p>To begin with, make a local copy of our oojs.html file. This contains very little — a <span>script</span> element for us to write our source code into. We'll use this as a basis for exploring basic object syntax. While working with
+                        this example you should have your developer tools JavaScript console open and ready to type in some commands.</p>
+
+                    <p>As with many things in JavaScript, creating an object often begins with defining and initializing a variable. Try entering the following below the JavaScript code that's already in your file, then saving and refreshing: <span>var person = {};</span>If
+                        you enter person into your JS console and press the button, you should get the following result: <span>[object Object]</span> Congratulations, you've just created your first object. Job done! But this is an empty object, so we
+                        can't really do much with it. Let's update our object to look like this: </p>
+                </article>
+
+                <code>
+                  var person = { 
+                              name: ['Bob', 'Smith'], 
+                              age: 32, 
+                              gender: 'male', 
+                              interests: ['music', 'skiing'], 
+                              bio: function() { 
+                              alert(this.name[0] + ' ' + this.name[1] + ' is ' + 
+                              this.age + ' years old. He likes ' + 
+                              this.interests[0] + ' and ' + this.interests[1] + '.'); 
+                      }, 
+                               greeting: function() { 
+                                  alert('Hi! I\'m ' + this.name[0] + '.'); 
+                              } 
+                    };
+                    </code>
+
+                <article>
+                    <p>After saving and refreshing, try entering some of the following into the JavaScript console on your browser devtools:</p>
+                    <ol>
+                        <li>person.name</li>
+                        <li>person.name[0] </li>
+                        <li>person.age </li>
+                        <li>person.interests[1] </li>
+                        <li>person.bio() </li>
+                        <li>person.greeting() </li>
+                    </ol>
+                    <p>You have now got some data and functionality inside your object, and are now able to access them with some nice simple syntax! So what is going on here? Well, an object is made up of multiple members, each of which has a name (e.g.
+                        <span>name</span> and <span>age</span> above), and a value (e.g. <span>['Bob', 'Smith']</span> and <span>32</span>). Each name/value pair must be separated by a comma, and the name and value in each case are separated by a colon.
+                        The syntax always follows this pattern:</p>
+                    <code>
+                      var objectName = { 
+                          member1Name: member1Value, 
+                          member2Name: member2Value, 
+                          member3Name: member3Value 
+                      };
+                </code>
+                    <p>
+                        The value of an object member can be pretty much anything — in our person object we've got a string, a number, two arrays, and two functions. The first four items are data items, and are referred to as the object's properties. The last two items are functions
+                        that allow the object to do something with that data, and are referred to as the object's methods.</p>
+
+                    <p>An object like this is referred to as an object literal — we've literally written out the object contents as we've come to create it. This is in contrast to objects instantiated from classes, which we'll look at later on.</p>
+
+                    <p>It is very common to create an object using an object literal when you want to transfer a series of structured, related data items in some manner, for example sending a request to the server to be put into a database. Sending a single
+                        object is much more efficient than sending several items individually, and it is easier to work with than an array, when you want to identify individual items by name.
+                    </p>
+                </article>
+            </section>
+
+
+            <section class="main-section" id="Dot_notation">
+                <header>Dot notation</header>
+                <article>
+                    <p>Above, you accessed the object's properties and methods using dot notation. The object name (person) acts as the namespace — it must be entered first to access anything encapsulated inside the object. Next you write a dot, then the
+                        item you want to access — this can be the name of a simple property, an item of an array property, or a call to one of the object's methods, for example:</p>
+
+                    <ol>
+                        <li>person.age</li>
+                        <li>person.interests[1]</li>
+                        <li>person.bio()</li>
+                    </ol>
+
+                    <p>It is even possible to make the value of an object member another object. For example, try changing the name member from</p>
+
+
+                    <code>
+                      name: ['Bob', 'Smith'],
+                  </code>
+
+                    <p>to</p>
+
+
+                    <code>
+                    name : { 
+                            first: 'Bob', 
+                            last: 'Smith' 
+                    },
+                  </code>
+
+                    <p>Here we are effectively creating a sub-namespace. This sounds complex, but really it's not — to access these items you just need to chain the extra step onto the end with another dot. Try these in the JS console:
+                    </p>
+                    <ol>
+                        <li>person.name.first</li>
+                        <li>person.name.last</li>
+                    </ol>
+                    <p>Important: At this point you'll also need to go through your method code and change any instances of </p>
+
+                    <code>
+                      name[0]    
+                      name[1]     
+                 </code>
+                    <p>to</p>
+                    <code>
+                      name.first
+                      name.last
+                      </code>
+                    <p>Otherwise your methods will no longer work</p>
+                </article>
+            </section>
+
+
+            <section class="main-section" id="Bracket_notation">
+                <header>Bracket notation</header>
+                <article>
+                    <p>There is another way to access object properties — using bracket notation. Instead of using these:</p>
+
+                    <code>
+                      person.age 
+                      person.name.first
+                </code>
+                    <p>You can use</p>
+                    <code>
+                        person['age']
+                        person['name']['first']
+                 </code>
+                    <p>This looks very similar to how you access the items in an array, and it is basically the same thing — instead of using an index number to select an item, you are using the name associated with each member's value. It is no wonder that
+                        objects are sometimes called associative arrays — they map strings to values in the same way that arrays map numbers to values.
+                    </p>
+                </article>
+            </section>
+
+
+            <section class="main-section" id="Setting_object_members">
+                <header>Setting object members</header>
+                <article>
+                    <p>So far we've only looked at retrieving (or getting) object members — you can also set (update) the value of object members by simply declaring the member you want to set (using dot or bracket notation), like this: </p>
+                    <code>
+                    person.age = 45; 
+                    person['name']['last'] = 'Cratchit';
+                </code>
+                    <p>Try entering the above lines, and then getting the members again to see how they've changed, like so:</p>
+                    <code>
+                    person.age 
+                    person['name']['last']
+                </code>
+                    <p>Setting members doesn't just stop at updating the values of existing properties and methods; you can also create completely new members. Try these in the JS console:</p>
+
+                    <code>
+                      person['eyes'] = 'hazel'; 
+                      person.farewell = function() { 
+                                          alert("Bye everybody!"); 
+                                        }
+                </code>
+                    <p>You can now test out your new members:</p>
+                    <code>
+                      person['eyes'] 
+                      person.farewell()
+                </code>
+                    <p>One useful aspect of bracket notation is that it can be used to set not only member values dynamically, but member names too. Let's say we wanted users to be able to store custom value types in their people data, by typing the member
+                        name and value into two text inputs? We could get those values like this:</p>
+                    <code>
+                    var myDataName = nameInput.value; 
+                    var myDataValue = nameValue.value;
+                </code>
+                    <p>we could then add this new member name and value to the person object like this:</p>
+                    <code>person[myDataName] = myDataValue;</code>
+                    <p>To test this, try adding the following lines into your code, just below the closing curly brace of the person object: </p>
+                    <code>
+                    var myDataName = 'height'; 
+                    var myDataValue = '1.75m'; 
+                    person[myDataName] = myDataValue;
+                </code>
+                    <p>Now try saving and refreshing, and entering the following into your text input:</p>
+                    <code>
+                    person.height
+                </code>
+                    <p>Adding a property to an object using the method above isn't possible with dot notation, which can only accept a literal member name, not a variable value pointing to a name.</p>
+                </article>
+            </section>
+
+
+            <section class="main-section" id="What_is_'this'?">
+                <header>What is 'this'?</header>
+                <article>
+                    <p>You may have noticed something slightly strange in our methods. Look at this one for example:</p>
+                    <code>greeting: 
+                              function() { 
+                                    alert('Hi! I\'m ' + this.name.first + '.');
+                             }
+                </code>
+                    <p>You are probably wondering what "this" is. The this keyword refers to the current object the code is being written inside — so in this case this is equivalent to person. So why not just write person instead? As you'll see in the Object-oriented
+                        JavaScript for beginners article when we start creating constructors, etc., this is very useful — it will always ensure that the correct values are used when a member's context changes (e.g. two different person object instances
+                        may have different names, but will want to use their own name when saying their greeting). Let's illustrate what we mean with a simplified pair of person objects: </p>
+                    <code>
+                    var person1 = { 
+                        name: 'Chris', 
+                        greeting: function() { 
+                            alert('Hi! I\'m ' + this.name + '.'); 
+                        } 
+                    } 
+                
+                   var person2 = { 
+                        name: 'Brian', 
+                        greeting: function() { 
+                            alert('Hi! I\'m ' + this.name + '.'); 
+                        } 
+                  }
+                  </code>
+                    <p>In this case, <span>person1.greeting()</span> will output "Hi! I'm Chris."; <span>person2.greeting()</span> on the other hand will output "Hi! I'm Brian.", even though the method's code is exactly the same in each case. As we said
+                        earlier, this is equal to the object the code is inside — this isn't hugely useful when you are writing out object literals by hand, but it really comes into its own when you are dynamically generating objects (for example using
+                        constructors). It will all become clearer later on.
+                    </p>
+                </article>
+            </section>
+
+            <section class="main-section" id="Object-oriented_JavaScript_for_beginners">
+                <header>Object-oriented JavaScript for beginners</header>
+                <article>
+                    <p>With the basics out of the way, we'll now focus on object-oriented JavaScript (OOJS) — this article presents a basic view of object-oriented programming (OOP) theory, then explores how JavaScript emulates object classes via constructor
+                        functions, and how to create object instances.</p>
+                    <p>
+                        To start with, let's give you a simplistic, high-level view of what Object-oriented programming (OOP) is. We say simplistic, because OOP can quickly get very complicated, and giving it a full treatment now would probably confuse more than help. The basic
+                        idea of OOP is that we use objects to model real world things that we want to represent inside our programs, and/or provide a simple way to access functionality that would otherwise be hard or impossible to make use of.</p>
+
+                    <p>Objects can contain related data and code, which represent information about the thing you are trying to model, and functionality or behavior that you want it to have. Object data (and often, functions too) can be stored neatly (the
+                        official word is encapsulated) inside an object package (which can be given a specific name to refer to, which is sometimes called a namespace), making it easy to structure and access; objects are also commonly used as data stores
+                        that can be easily sent across the network.
+                    </p>
+                    <p>Let's consider a simple program that displays information about the students and teachers at a school. Here we'll look at OOP theory in general, not in the context of any specific programming language. To start this off, we could return
+                        to our Person object type from our first objects article, which defines the generic data and functionality of a person. There are lots of things you could know about a person (their address, height, shoe size, DNA profile, passport
+                        number, significant personality traits ...) , but in this case we are only interested in showing their name, age, gender, and interests, and we also want to be able to write a short introduction about them based on this data, and
+                        get them to say hello. This is known as abstraction — creating a simple model of a more complex thing, which represents its most important aspects in a way that is easy to work with for our program's purposes.</p>
+                </article>
+            </section>
+
+
+            <section class="main-section" id="Constructors_and_object_instances">
+                <header>Constructors and object instances</header>
+                <article>
+                    <p>JavaScript uses special functions called constructor functions to define objects and their features. They are useful because you'll often come across situations in which you don't know how many objects you will be creating; constructors
+                        provide the means to create as many objects as you need in an effective way, attaching data and functions to them as required. When a new object instance is created from a constructor function, its core functionality (as defined
+                        by its prototype, which we'll explore in the article Object prototypes) is linked to via a reference chain called a prototype chain.</p>
+                    <p>Let's explore creating classes via constructors and creating object instances from them in JavaScript. First of all, we'd like you to make a new local copy of the oojs.html file we saw in our first Objects article.Let's start by looking
+                        at how you could define a person with a normal function. Add this function within the script element:</p>
+                    <code>
+                    function createNewPerson(name) { 
+                              var obj = {}; 
+                              obj.name = name; 
+                              obj.greeting = function() { 
+                                  alert('Hi! I\'m ' + this.name + '.'); 
+                              }; 
+                            return obj; 
+                    }
+                </code>
+                    <p>You can now create a new person by calling this function — try the following lines in your browser's JavaScript console: </p>
+                    <code>
+                      var salva = createNewPerson('Salva'); 
+                      salva.name; 
+                      salva.greeting();
+                </code>
+                    <p>This works well enough, but it is a bit long-winded; if we know we want to create an object, why do we need to explicitly create a new empty object and return it? Fortunately, JavaScript provides us with a handy shortcut, in the form
+                        of constructor functions — let's make one now! Replace your previous function with the following:</p>
+                    <code>
+                      function Person(name) { 
+                        this.name = name; 
+                        this.greeting = function() { 
+                          alert('Hi! I\'m ' + this.name + '.'); 
+                        }; 
+                      }
+                </code>
+                    <p>The constructor function is JavaScript's version of a class. You'll notice that it has all the features you'd expect in a function, although it doesn't return anything or explicitly create an object — it basically just defines properties
+                        and methods. You'll see the this keyword being used here as well — it is basically saying that whenever one of these object instances is created, the object's name property will be equal to the name value passed to the constructor
+                        call, and the greeting() method will use the name value passed to the constructor call too. So how do we call a constructor to create some objects? Add the following lines below your previous code addition:</p>
+                    <code>
+                      var person1 = new Person('Bob'); 
+                      var person2 = new Person('Sarah'); 
+                </code>
+                    <p>Save your code and reload it in the browser, and try entering the following lines into your JS console:</p>
+                    <ol>
+                        <li>person1.name</li>
+                        <li>person1.greeting()</li>
+                        <li>person2.name</li>
+                        <li>person2.greeting()</li>
+                    </ol>
+                    <p>Cool! You'll now see that we have two new objects on the page, each of which is stored under a different namespace — when you access their properties and methods, you have to start calls with person1 or person2; the functionality contained
+                        within is neatly packaged away so it won't clash with other functionality. They do, however, have the same name property and greeting() method available. Note that they are using their own name value that was assigned to them when
+                        they were created; this is one reason why it is very important to use this, so they will use their own values, and not some other value. Let's look at the constructor calls again: </p>
+                    <code>
+                    var person1 = new Person('Bob');
+                    var person2 = new Person('Sarah');
+                 </code>
+                    <p>In each case, the new keyword is used to tell the browser we want to create a new object instance, followed by the function name with its required parameters contained in parentheses, and the result is stored in a variable — very similar
+                        to how a standard function is called. Each instance is created according to this definition:</p>
+                    <code>
+                    function Person(name) { 
+                      this.name = name;
+                      this.greeting = function() { 
+                        alert('Hi! I\'m ' + this.name + '.'); 
+                      };
+                    }
+                </code>
+                    <p>After the new objects have been created, the person1 and person2 variables contain the following objects:</p>
+                    <code>
+                    {
+                      name: 'Bob',
+                      greeting: function() { 
+                                  alert('Hi! I\'m ' + this.name + '.'); 
+                                } 
+                    } 
+                
+                { 
+                      name: 'Sarah', 
+                      greeting: function() { 
+                                  alert('Hi! I\'m ' + this.name + '.'); 
+                                } 
+                      }
+                </code>
+                    <p>Note that when we are calling our constructor function, we are defining greeting() every time, which isn't ideal. To avoid this, we can define functions on the prototype instead, which we will look at later.
+                    </p>
+                </article>
+            </section>
+
+
+            <section class="main-section" id="Other_ways_to_create_object_instances">
+                <header>Other ways to create object instances</header>
+                <article>
+                    <p>So far we've seen two different ways to create an object instance — declaring an object literal, and using a constructor function (see above). These make sense, but there are other ways — we want to make you familiar with these in
+                        case you come across them in your travels around the Web.</p>
+                    <p>First of all, you can use the Object() constructor to create a new object. Yes, even generic objects have a constructor, which generates an empty object. Try entering this into your browser's JavaScript console:</p>
+
+
+
+                    <code>
+                var person1 = new Object();
+                      </code>
+
+
+
+                    <p>This stores an empty object in the person1 variable. You can then add properties and methods to this object using dot or bracket notation as desired; try these examples in your console:</p>
+
+
+
+                    <code>
+                person1.name = 'Chris';
+                person1['age'] = 38;
+                person1.greeting = function() {
+                  alert('Hi! I\'m ' + this.name + '.');
+                };
+                      </code>
+
+
+
+                    <p>You can also pass an object literal to the Object() constructor as a parameter, to prefill it with properties/methods. Try this in your JS console: </p>
+
+
+                    <code>
+                      var person1 = new Object({ 
+                          name: 'Chris',
+                          age: 38,
+                          greeting: function() {
+                                      alert('Hi! I\'m ' + this.name + '.'); 
+                                    } 
+                    });
+                    </code>
+
+
+
+                    <p>Constructors can help you give your code order—you can create constructors in one place, then create instances as needed, and it is clear where they came from. However, some people prefer to create object instances without first creating
+                        constructors, especially if they are creating only a few instances of an object. JavaScript has a built-in method called create() that allows you to do that. With it, you can create a new object based on any existing object. With
+                        your finished exercise from the previous sections loaded in the browser, try this in your JavaScript console:</p>
+
+
+
+                    <code>
+                var person2 = Object.create(person1);
+                      </code>
+
+                    <p>Now try these:</p>
+
+
+                    <code>
+                person2.name
+                person2.greeting()
+                      </code>
+                    <p>You'll see that <span>person2</span> has been created based on <span>person1</span>—it has the same properties and method available to it.One limitation of <span>create()</span> is that IE8 does not support it. So <span>constructors</span>                        may be more effective if you want to support older browsers.</p>
+                </article>
+            </section>
+
+
+            <section class="main-section" id="Object_Prototypes">
+                <header>Object Prototypes</header>
+                <article>
+                    <p>
+                        Prototypes are the mechanism by which JavaScript objects inherit features from one another. In this article, we explain how prototype chains work and look at how the prototype property can be used to add methods to existing constructors.</p>
+
+                    <p>JavaScript is often described as a prototype-based language — each object has a prototype object, which acts as a template object that it inherits methods and properties from. An object's prototype object may also have a prototype
+                        object, which it inherits methods and properties from, and so on. This is often referred to as a prototype chain, and explains why different objects have properties and methods defined on other objects available to them.</p>
+
+                    <p>Well, to be exact, the properties and methods are defined on the prototype property on the Objects' constructor functions, not the object instances themselves. In JavaScript, a link is made between the object instance and its prototype
+                        (its __proto__ property, which is derived from the prototype property on the constructor), and the properties and methods are found by walking up the chain of prototypes.Let's look at an example to make this a bit clearer.</p>
+
+                    <p>Here we'll go back to the example in which we finished writing our <span>Person()</span> constructor — load the example in your browser. If you don't still have it from working through the last article, use our <span>oojs-class-further-exercises.html</span>                        example (see also the source code).In this example, we have defined a constructor function, like so:</p>
+
+
+
+                    <code>
+                      function Person(first, last, age, gender, interests) { 
+                        // property and method definitions 
+                        this.first = first; 
+                        this.last = last; 
+                         //... 
+                      }
+                 </code>
+
+
+                    <p>We have then created an object instance like this:</p>
+
+                    <code>
+                var person1 = new Person('Bob', 'Smith', 32, 'male', ['music', 'skiing']);
+                  </code>
+
+                    <p>If you type <span>"person1."</span> into your JavaScript console, you should see the browser try to auto-complete this with the member names available on this object</p>
+
+                    <p> In this list, you will see the members defined on <span>person1'</span>s prototype object, which is the <span>Person()</span> (Person() is the constructor) — <span>name</span>, <span>age</span>, <span>gender</span>, <span>interests</span>,
+                        <span>bio</span>, and <span>greeting</span>. You will however also see some other members — <span>watch</span>, <span>valueOf</span>, etc — these are defined on the <span>Person()</span> 's prototype object, which is <span>Object</span>.
+                        This demonstrates the prototype chain working. So what happens if you call a method on <span>person1</span>, which is actually defined on <span>Object</span>? For example:</p>
+
+                    <code>person1.valueOf()</code>
+
+                    <p>This method simply returns the value of the object it is called on — try it and see! In this case, what happens is:</p>
+
+                    <ul>
+                        <li>The browser initially checks to see if the person1 object has a <span>valueOf()</span> method available on it.</li>
+                        <li>It doesn't, so the browser then checks to see if the person1 object's prototype object (Person() constructor's prototype) has a <span>valueOf()</span> method available on it.</li>
+                        <li>It doesn't either, so the browser then checks to see if the <span>Person()</span> constructor's prototype object's prototype object (<span>Object() constructor's prototype</span>) has a <span>valueOf()</span> method available on
+                            it. It does, so it is called, and all is good!</li>
+                    </ul>
+                </article>
+            </section>
+
+
+            <section class="main-section" id="The_prototype_property:_Where_inherited_members_are_defined">
+                <header>The prototype property: Where inherited members are defined</header>
+                <article>
+                    <p>
+                        So, where are the inherited properties and methods defined? If you look at the <span>Object</span> reference page, you'll see listed in the left hand side a large number of properties and methods — many more than the number of
+                        inherited members we saw available on the <span>person1</span> object in the above screenshot. Some are inherited, and some aren't — why is this?</p>
+
+                    <p>The answer is that the inherited ones are the ones defined on the <span>prototype</span> property (you could call it a sub-namespace) — that is, the ones that begin with <span>Object.prototype.</span>, and not the ones that begin with
+                        just Object. The prototype property's value is an object, which is basically a bucket for storing properties and methods that we want to be inherited by objects further down the prototype chain.</p>
+
+                    <p>So <span>object.prototype.watch()</span>, <span>Object.prototype.valueOf()</span>, etc., are available to any object types that inherit from <span>Object.prototype</span>, including new object instances created from the constructor.
+
+                        <span>Object.is()</span>, <span>Object.keys()</span>, and other members not defined inside the prototype bucket are not inherited by object instances or object types that inherit from <span>Object.prototype</span>. They are methods/properties
+                        available just on the <span>Object()</span> constructor itself.</p>
+                </article>
+
+                <ol>
+                    <li>You can check out existing prototype properties for yourself — go back to our previous example and try entering the following into the JavaScript console:
+                    </li>
+                    <code>
+                      Person.prototype
+                    </code>
+
+                    <li>The output won't show you very much — after all, we haven't defined anything on our custom constructor's prototype! By default, a constructor's prototype always starts empty. Now try the following: </li>
+
+                    <code>
+                      Object.prototype
+                    </code>
+                </ol>
+
+                <article>
+                    <p>You'll see a large number of methods defined on Object's prototype property, which are then available on objects that inherit from Object, as shown earlier. You'll see other examples of prototype chain inheritance all over JavaScript
+                        — try looking for the methods and properties defined on the prototype of the String, Date, Number, and Array global objects, for example. These all have a number of members defined on their prototype, which is why for example when
+                        you create a string, like this:</p>
+                </article>
+
+
+                <code>
+                var myString = 'This is my string.';
+                  </code>
+                <article>
+                    <p>
+                        <span>myString</span> immediately has a number of useful methods available on it, like <span>split()</span>, <span>indexOf()</span>, <span>replace()</span>, etc.</p>
+                </article>
+            </section>
+
+
+
+            <section class="main-section" id="Revisiting_create()">
+                <header>Revisiting create()</header>
+                <article>
+                    <p>Earlier on we showed how the <span>Object.create()</span> method can be used to create a new object instance</p>
+                </article>
+
+                <ol>
+                    <li>For example, try this in your previous example's JavaScript console:</li>
+
+                    <code>
+                  var person2 = Object.create(person1);
+                  </code>
+
+                    <li>What create() actually does is to create a new object from a specified prototype object. Here, person2 is being created using person1 as a prototype object. You can check this by entering the following in the console:</li>
+
+                    <code>
+                    person2.__proto__
+                  </code>
+                </ol>
+
+                <article>
+                    <p>This will return the person1.</p>
+                </article>
+            </section>
+
+
+            <section class="main-section" id="The_constructor_property">
+                <header>The constructor property</header>
+                <article>
+                    <p>Every constructor function has a prototype property whose value is an object containing a <span>constructor</span> property. This constructor property points to the original constructor function. As you will see in the next section
+                        that properties defined on the Person.prototype property (or in general on a constructor function's prototype property, which is an object, as mentioned in the above section) become available to all the instance objects created
+                        using the Person() constructor. Hence, the constructor property is also available to both person1 and person2 objects.
+                    </p>
+                </article>
+
+                <ol>
+                    <li>
+                        For example, try these commands in the console:
+                    </li>
+
+                    <code>
+                    person1.constructor   
+                    person2.constructor
+                  </code>
+
+
+                    <article>
+                        <p>These should both return the <span>Person()</span> constructor, as it contains the original definition of these instances. A clever trick is that you can put parentheses onto the end of the constructor property (containing any
+                            required parameters) to create another object instance from that constructor. The constructor is a function after all, so can be invoked using parentheses; you just need to include the new keyword to specify that you want to
+                            use the function as a constructor.</p>
+                    </article>
+                    <ol>
+                        <li>
+                            Try this in the console:
+                        </li>
+
+
+                        <code>
+                      var person3 = new person1.constructor('Karen', 'Stephenson', 26, 
+                                                              'female', ['playing 
+                                                            drums', 'mountain climbing']);
+                    </code>
+
+                        <li>
+                            Now try accessing your new object's features, for example:
+                        </li>
+
+                        <code>
+                      person3.name.first 
+                      person3.age 
+                      person3.bio()
+                    </code>
+                    </ol>
+
+                    <article>
+                        <p>
+                            This works well. You won't need to use it often, but it can be really useful when you want to create a new instance and don't have a reference to the original constructor easily available for some reason. The <span>constructor</span>                            property has other uses. For example, if you have an object instance and you want to return the name of the constructor it is an instance of, you can use the following:</p>
+                    </article>
+
+                    <code>instanceName.constructor.name</code>
+
+                    <article>
+                        <p>Try this, for example:</p>
+                    </article>
+
+
+                    <code>
+                person1.constructor.name
+                  </code>
+            </section>
+
+
+            <section class="main-section" id="Prototypal_inheritance">
+                <header>Prototypal inheritance</header>
+                <article>
+                    <p>So far we have seen some inheritance in action — we have seen how prototype chains work, and how members are inherited going up a chain. But mostly this has involved built-in browser functions. How do we create an object in JavaScript
+                        that inherits from another object? Let's explore how to do this with a concrete example.</p>
+
+                    <p>First of all, make yourself a local copy of our oojs-class-inheritance-start.html file (see it running live also). Inside here you'll find the same <span>Person()</span> constructor example that we've been using all the way through
+                        the module, with a slight difference — we've defined only the properties inside the constructor:</p>
+
+                    <code>
+                    function Person(first, last, age, gender, interests) { 
+                                    this.name = { first, last }; 
+                                    this.age = age; 
+                                    this.gender = gender; 
+                                    this.interests = interests; 
+                    };
+                  </code>
+
+                    <article>
+                        <p>The methods are all defined on the constructor's prototype. For example:</p>
+                    </article>
+
+
+                    <code>
+                    Person.prototype.greeting = function() { 
+                                      alert('Hi! I\'m ' + this.name.first + '.'); 
+                                     };
+                  </code>
+
+                    <article>
+                        <p>Say we wanted to create a Teacher class, like the one we described in our initial object-oriented definition, which inherits all the members from <span>Person</span>, but also includes:</p>
+
+                        <ol>
+                            <li>A new property, <span>subject</span> — this will contain the subject the teacher teaches.</li>
+                            <li>An updated <span>greeting()</span> method, which sounds a bit more formal than the standard <span>greeting()</span> method — more suitable for a teacher addressing some students at school.</li>
+                        </ol>
+                    </article>
+            </section>
+
+            <section class="main-section" id="Defining_a_Teacher()_constructor_function">
+                <header>Defining a Teacher() constructor function</header>
+                <article>
+                    <p>The first thing we need to do is create a <span>Teacher()</span> constructor — add the following below the existing code:</p>
+                </article>
+
+
+                <code>
+                    function Teacher (first, last, age, gender, interests, subject) { 
+                              Person.call (this, first, last, age, gender, interests); 
+                              this.subject = subject; 
+                    }
+                  </code>
+
+
+                <article>
+                    <p>
+                        This looks similar to the Person constructor in many ways, but there is something strange here that we've not seen before — the <span>call()</span> function. This function basically allows you to call a function defined somewhere
+                        else, but in the current context. The first parameter specifies the value of this that you want to use when running the function, and the other parameters are those that should be passed to the function when it is invoked.</p>
+
+                    <p>We want the <span>Teacher()</span> constructor to take the same parameters as the <span>Person()</span> constructor it is inheriting from, so we specify them all as parameters in the <span>call()</span> invocation. The last line inside
+                        the constructor simply defines the new <span>subject</span> property that teachers are going to have, which generic people don't have. As a note, we could have simply done this:</p>
+                </article>
+
+
+                <code>
+                    function Teacher(first, last, age, gender, interests, subject) {
+                                     this.name = { first, last };
+                                     this.age = age; 
+                                     this.gender = gender; 
+                                     this.interests = interests; 
+                                     this.subject = subject;
+                    }
+                  </code>
+
+
+                <article>
+                    <p>But this is just redefining the properties anew, not inheriting them from <span>Person()</span>, so it defeats the point of what we are trying to do. It also takes more lines of code.</p>
+
+                    <p>Note that if the constructor you are inheriting from doesn't take its property values from parameters, you don't need to specify them as additional arguments in call(). So, for example, if you had something really simple like this:</p>
+                </article>
+
+
+                <code>
+                    function Brick() { 
+                            this.width = 10; 
+                            this.height = 20; 
+                    }
+                  </code>
+
+
+                <article>
+                    <p>You could inherit the width and height properties by doing this (as well as the other steps described below, of course):</p>
+                </article>
+
+
+                <code>
+                    function BlueGlassBrick() { 
+                              Brick.call(this);
+                              this.opacity = 0.5; 
+                              this.color = 'blue'; 
+                    }
+                  </code>
+
+
+                <article>
+                    <p>Note that we've only specified this inside <span>call()</span> — no other parameters are required as we are not inheriting any properties from the parent that are set via parameters.</p>
+                </article>
+            </section>
+
+
+            <section class="main-section" id="Setting_Teacher()_prototype_and_constructor_reference">
+                <header>Setting Teacher() prototype and constructor reference</header>
+                <article>
+                    <p>All is good so far, but we have a problem. We have defined a new constructor, and it has a <span>prototype</span> property, which by default just contains a reference to the constructor function itself. It does not contain the methods
+                        of the Person constructor's <span>prototype</span> property. To see this, enter <span>Object.getOwnPropertyNames(Teacher.prototype)</span> into either the text input field or your JavaScript console. </p>
+                    <p>Then enter it again, replacing <span>Teacher</span> with <span>Person</span>. Nor does the new constructor inherit those methods. To see this, compare the outputs of <span>Person.prototype.greeting</span> and <span>Teacher.prototype.greeting</span>.
+                        We need to get <span>Teacher()</span> to inherit the methods defined on <span>Person()</span>'s prototype. So how do we do that? Add the following line below your previous addition:</p>
+                </article>
+
+
+                <code>Teacher.prototype = Object.create(Person.prototype)</code>
+
+
+                <article>
+                    <p>
+                        Here our friend <span>create()</span> comes to the rescue again. In this case we are using it to create a new object and make it the value of <span>Teacher.prototype</span>. The new object has <span>Person.prototype</span> as its
+                        prototype and will therefore inherit, if and when needed, all the methods available on <span>Person.prototype</span>.
+                    </p>
+
+                    <p> We need to do one more thing before we move on. After adding the last line, <span>Teacher.prototype</span>'s <span>constructor</span> property is now equal to <span>Person()</span>, because we just set <span>Teacher.prototype</span>                        to reference an object that inherits its properties from <span>Person.prototype</span>! Try saving your code, loading the page in a browser, and entering <span>Teacher.prototype.constructor</span> into the console to verify.</p>
+
+                    <p>This can become a problem, so we need to set this right. You can do so by going back to your source code and adding the following line at the bottom:</p>
+                </article>
+
+
+                <code>
+                      Teacher.prototype.constructor = Teacher;
+                    </code>
+
+
+                <article>
+                    <p>Now if you save and refresh, entering <span>Teacher.prototype.constructor</span> should return <span>Teacher()</span>, as desired, plus we are now inheriting from <span>Person()</span>!</p>
+                </article>
+            </section>
+
+
+            <section class="main-section" id="Giving_Teacher()_a_new_greeting()_function">
+                <header>Giving Teacher() a new greeting() function</header>
+                <article>
+                    <p>To finish off our code, we need to define a new <span>greeting()</span> function on the <span>Teacher()</span> constructor.</p>
+
+                    <p>The easiest way to do this is to define it on <span>Teacher()</span>'s prototype — add the following at the bottom of your code:</p>
+                </article>
+
+                <code>
+                    Teacher.prototype.greeting = 
+                            function() { 
+                              var prefix; 
+                              if (this.gender === 'male' || this.gender === 'Male'|| this.gender === 'm' || this.gender === 'M') { prefix = 'Mr.'; } 
+                              else if (this.gender === 'female' || this.gender === 'Female' || this.gender === 'f' || this.gender === 'F') { prefix = 'Mrs.'; } 
+                              else { prefix = 'Mx.'; } 
+                alert('Hello. My name is ' + prefix + ' ' + this.name.last + ', and I teach ' + this.subject + '.'); 
+                    };
+                  </code>
+
+
+                <article>
+                    <p>This alerts the teacher's greeting, which also uses an appropriate name prefix for their gender, worked out using a conditional statement.</p>
+                </article>
+            </section>
+
+            <section class="main-section" id="ECMAScript_2015_Classes">
+                <header>ECMAScript 2015 Classes</header>
+                <article>
+                    <p>ECMAScript 2015 introduces class syntax to JavaScript as a way to write reusable classes using easier, cleaner syntax, which is more similar to classes in C++ or Java. In this section we'll convert the Person and Teacher examples from
+                        prototypal inheritance to classes, to show you how it's done. Let's look at a rewritten version of the Person example, class-style:</p>
+                </article>
+
+
+                <code>
+                    class Person { 
+                          constructor(first, last, age, gender, interests) { 
+                          this.name = { first, last }; 
+                          this.age = age; 
+                          this.gender = gender; 
+                          this.interests = interests; 
+                  } 
+                  
+                  greeting() { 
+                      console.log(`Hi! I'm ${this.name.first}`); 
+                  }; 
+                
+                  farewell() { 
+                    console.log(`${this.name.first} has left the building. Bye for now!`); 
+                  }; 
+                }
+                  </code>
+
+
+                <article>
+                    <p>The class statement indicates that we are creating a new class. Inside this block, we define all the features of the class:</p>
+                    <ul>
+                        <li>The <span>constructor()</span> method defines the constructor function that represents our <span>Person</span> class.</li>
+                        <li><span>greeting()</span> and <span>farewell()</span> are class methods. Any methods you want associated with the class are defined inside it, after the constructor. In this example, we've used template literals rather than string
+                            concatenation to make the code easier to read.</li>
+                    </ul>
+                    <p>We can now instantiate object instances using the <span>new</span> operator, in just the same way as we did before:</p>
+                </article>
+
+
+                <code>
+                    let han = new Person('Han', 'Solo', 25, 'male', ['Smuggling']); 
+                    han.greeting(); // Hi! I'm Han 
+                    let leia = new Person('Leia', 'Organa', 19, 'female' ['Government']]); 
+                    leia.farewell(); // Leia has left the building. Bye for now 
+                  </code>
+            </section>
+
+
+            <section class="main-section" id="Inheritance_with_class_syntax">
+                <header>Inheritance with class syntax</header>
+                <article>
+                    <p>Above we created a class to represent a person. They have a series of attributes that are common to all people; in this section we'll create our specialized <span>Teacher</span> class, making it inherit from <span>Person</span> using
+                        modern class syntax. This is called creating a subclass or subclassing. To create a subclass we use the extends keyword to tell JavaScript the class we want to base our class on.</p>
+                </article>
+
+
+                <code>
+                    class Teacher extends Person { 
+                          constructor(first, last, age, gender, interests, subject, grade) {
+                              this.name = { first, last  }; 
+                              this.age = age; 
+                              this.gender = gender; 
+                              this.interests = interests; 
+                              // subject and grade are specific to Teacher 
+                              this.subject = subject; 
+                              this.grade = grade; 
+                        } 
+                  }
+                  </code>
+
+
+                <article>
+                    <p>We can make the code more readable by defining the <span>super()</span> operator as the first item inside the <span>constructor()</span>. This will call the parent class' constructor, and inherit the members we specify as parameters
+                        of <span>super()</span>, as long as they are defined there:</p>
+                </article>
+
+                <code>
+                    class Teacher extends Person { 
+                          constructor(first, last, age, gender, interests, subject, grade) { 
+                          super(first, last, age, gender, interests);
+                
+                          // subject and grade are specific to Teacher 
+                              this.subject = subject; 
+                               this.grade = grade; 
+                        } 
+                  }
+                  </code>
+
+                <article>
+                    <p>When we instantiate <span>Teacher</span> object instances, we can now call methods and properties defined on both <span>Teacher</span> and <span>Person</span>Person, as we'd expect:</p>
+                </article>
+
+                <code>
+                    let snape = new Teacher('Severus', 'Snape', 58, 'male', ['Potions'], 'Dark arts', 5); 
+                                snape.greeting(); // Hi! I'm Severus. 
+                                snape.farewell(); // Severus has left the building. Bye for now. 
+                                snape.age // 58 
+                                snape.subject; // Dark arts 
+                  </code>
+
+                <article>
+                    <p>Like we did with <span>Teachers</span>, we could create other subclasses of <span>Person</span> to make them more specialized without modifying the base class.
+                    </p>
+                </article>
+            </section>
+
+            <section class="main-section" id="Getters_and_Setters">
+                <header>Getters and Setters</header>
+                <article>
+                    <p>There may be times when we want to change the values of an attribute in the classes we create or we don't know what the final value of an attribute will be. Using the <span>Teacher</span> example, we may not know what subject the teacher
+                        will teach before we create them, or their subject may change between terms. We can handle such situations with getters and setters.</p>
+
+                    <p>Let's enhance the <span>Teacher</span> class with getters and setters. The class starts the same as it was the last time we looked at it. Getters and setters work in pairs. A getter returns the current value of the variable and its
+                        corresponding setter changes the value of the variable to the one it defines. The modified <span>Teacher</span> class looks like this:</p>
+                </article>
+
+                <code>
+                    class Teacher extends Person { 
+                            constructor(first, last, age, gender, interests, subject, grade) { 
+                            super(first, last, age, gender, interests); 
+                            // subject and grade are specific to Teacher 
+                            this._subject = subject; 
+                            this.grade = grade; 
+                  }
+                
+                        get subject() { 
+                          return this._subject; 
+                        } 
+                
+                        set subject(newSubject) { 
+                          this._subject = newSubject; 
+                        } 
+                }
+                  </code>
+
+                <article>
+                    <p>In our class above we have a getter and setter for the <span>subject</span> property. We use <span>_</span> to create a separate value in which to store our name property. Without using this convention, we would get errors every time
+                        we called get or set. At this point:</p>
+
+
+
+                    <ul>
+                        <li>To show the current value of the <span>_subject</span> property of the <span>snape</span> object we can use the <span>snape.subject</span> getter method.</li>
+                        <li>To assign a new value to the <span>_subject</span> property we can use the <span>snape.subject="new value"</span> setter method.</li>
+                    </ul>
+                    <p>The example below shows the two features in action:</p>
+
+                </article>
+
+                <code>
+                        // Check the default value 
+                        console.log(snape.subject) // Returns "Dark arts" 
+                        // Change the value 
+                        snape.subject="Balloon animals" // Sets _subject to "Balloon animals" 
+                        // Check it again and see if it matches the new value 
+                        console.log(snape.subject) // Returns "Balloon animals" 
+                  </code>
+            </section>
+
+
+
+            <section class="main-section" id="When_would_you_use_inheritance_in_JavaScript?">
+                <header>When would you use inheritance in JavaScript?</header>
+                <article>
+                    <p>Particularly after this last article, you might be thinking "woo, this is complicated". Well, you are right. Prototypes and inheritance represent some of the most complex aspects of JavaScript, but a lot of JavaScript's power and flexibility
+                        comes from its object structure and inheritance, and it is worth understanding how it works.</p>
+
+                    <p>In a way, you use inheritance all the time. Whenever you use various features of a Web API , or methods/properties defined on a built-in browser object that you call on your strings, arrays, etc., you are implicitly using inheritance.</p>
+
+                    <p>In terms of using inheritance in your own code, you probably won't use it often, especially to begin with, and in small projects. It is a waste of time to use objects and inheritance just for the sake of it when you don't need them.
+                        But as your code bases get larger, you are more likely to find a need for it. If you find yourself starting to create a number of objects that have similar features, then creating a generic object type to contain all the shared
+                        functionality and inheriting those features in more specialized object types can be convenient and useful.</p>
+
+                    <p>When using inheritance, you are advised to not have too many levels of inheritance, and to keep careful track of where you define your methods and properties. It is possible to start writing code that temporarily modifies the prototypes
+                        of built-in browser objects, but you should not do this unless you have a really good reason. Too much inheritance can lead to endless confusion, and endless pain when you try to debug such code.</p>
+
+                    <p>Ultimately, objects are just another form of code reuse, like functions or loops, with their own specific roles and advantages. If you find yourself creating a bunch of related variables and functions and want to track them all together
+                        and package them neatly, an object is a good idea. Objects are also very useful when you want to pass a collection of data from one place to another. Both of these things can be achieved without use of constructors or inheritance.
+                        If you only need a single instance of an object, then you are probably better off just using an object literal, and you certainly don't need inheritance.</p>
+                </article>
+            </section>
+
+            <section class="main-section" id="Reference">
+                <header>Reference</header>
+                <article>
+                    <p>All the documentation in this page is taken from <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects">MDN</a></p>
+                </article>
+            </section>
+        </section>
+    </main>
+</body>
+
+</html>
